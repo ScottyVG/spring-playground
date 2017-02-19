@@ -10,6 +10,7 @@ import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
  * Created by scottyvg on 2/19/17.
@@ -26,6 +27,8 @@ public class PagesControllerTest {
     public void testHomepage() throws Exception {
         RequestBuilder request = MockMvcRequestBuilders.get("/hello");
 
-        this.mvc.perform(request).andExpect(content());
+        this.mvc.perform(request)
+                .andExpect(status().isOk())
+                .andExpect(content().string("Hello world"));
     }
 }
