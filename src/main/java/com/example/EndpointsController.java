@@ -14,4 +14,11 @@ public class EndpointsController {
     public String getIndex() {
         return"Get to index route";
     }
+
+    @GetMapping("/tasks")
+    public String getTasks() {
+        return "These are tasks";
+    }
+
+
 }
