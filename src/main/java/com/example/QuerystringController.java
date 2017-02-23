@@ -1,8 +1,12 @@
 package com.example;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.context.request.WebRequest;
+
+import java.util.Map;
 
 /**
  * Created by scottyvg on 2/20/17.
@@ -39,3 +43,35 @@ public class QuerystringController {
     }
 
 }
+
+public class TaskInfo {
+    private String sortBy;
+    private String owner;
+
+    public String getSortBy() {
+        return sortBy;
+    }
+
+    public void setSortBy(String sortBy) {
+        this.sortBy = sortBy;
+    }
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
+}
+
+    @GetMapping("/tasks")
+    public String getTasks(TaskInfo taskInfo) {
+        return String.format("sort-by is %s; owner is %s", taskInfo.getSortBy(), taskInfo.getOwner());
+    }
+
+    @RequestMapping(value = "/", method = GET)
+    public List<T> getAll(WebRequest webRequest){
+        Map<String, String[]> params = webRequest.getParameterMap();
+        //...
+    }
