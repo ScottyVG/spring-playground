@@ -39,7 +39,7 @@ public class PathVariableController {
 
         public void setCommentId(int commentId) { this.commentId = commentId; }
     }
-    
+
     @GetMapping("/test/tasks/{taskId}/comments/{commentId}")
     public String getCommentsForTask(TaskIds ids) {
         return String.format("taskId is %d; commentId is %s", ids.getTaskId(), ids.getCommentId());
